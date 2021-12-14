@@ -1,11 +1,5 @@
 <?php
 
-/* Lägg in databasinfo */
-/*require 'config/Database.php';
-require 'config/config.php';
-require 'classes/Course.class.php';
-require 'config/errors.php'; */
-
 include ('config/config.php');
 
 //Skapar instans av klassen för att skicka SQL-frågor till databasen
@@ -27,10 +21,6 @@ $method = $_SERVER['REQUEST_METHOD'];
 if(isset($_GET['id'])){
     $id = $_GET['id'];
 }
-
-/*Anslutning till databasen
-$database = new Database();
-$db = $database->connect();*/
 
 switch($method){
     case 'GET':
@@ -78,7 +68,7 @@ switch($method){
             } 
         }
             break;
-
+/* Används ej i detta moment
 case 'PUT':
     //Om inget id är skickat, skicka error
     if(!isset($id)){
@@ -106,7 +96,7 @@ case 'PUT':
                 $result = array("message" => "Course could not be updated");
             }
     }
-    break; 
+    break; */
 
     case 'DELETE': 
         //Om inget id är medskickat, skicka felmeddelande
@@ -130,6 +120,3 @@ case 'PUT':
 
 //Return result av JSON
 echo json_encode($result);
-
-/*Close connection
-$db = $database->close(); */
